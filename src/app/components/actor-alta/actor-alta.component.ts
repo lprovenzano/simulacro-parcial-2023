@@ -1,3 +1,4 @@
+import { FirebaseService } from './../../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActorAltaComponent implements OnInit {
 
-  constructor() { }
+  public pais =''
+
+  constructor(private firebase: FirebaseService) { }
 
   ngOnInit(): void {
+  }
+
+  peliculaSeleccionada(pais:any){
+    this.pais = pais.nombre;
+  }
+
+  save(){
+   console.log("SAVE!")
   }
 
 }
