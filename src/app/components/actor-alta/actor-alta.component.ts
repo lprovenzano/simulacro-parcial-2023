@@ -1,5 +1,6 @@
 import { FirebaseService } from './../../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-actor-alta',
@@ -9,18 +10,35 @@ import { Component, OnInit } from '@angular/core';
 export class ActorAltaComponent implements OnInit {
 
   public pais =''
+  public myForm!: FormGroup;
+  public sentForm!:boolean;
 
-  constructor(private firebase: FirebaseService) { }
+  constructor(private firebase: FirebaseService, private formBuilder: FormBuilder) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.myForm = this.formBuilder.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      nation: ['', [Validators.minLength(3)]]
+    });
   }
 
   peliculaSeleccionada(pais:any){
     this.pais = pais.nombre;
   }
 
-  save(){
-   console.log("SAVE!")
+  onSubmit() {
+    if (this.myForm?.valid) {
+      const actor = {
+        nombre: this.myForm.value.firstName,
+        apellido: this.myForm.value.lastName,
+        pais: this.pais
+      }
+      this.firebase.save("actores", actor)
+      this.sentForm = true;
+    } else {
+      this.sentForm = false;
+    }
   }
 
 }
