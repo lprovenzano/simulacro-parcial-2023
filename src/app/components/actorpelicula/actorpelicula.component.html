@@ -1,0 +1,31 @@
+<main>
+  <div class="container py-4">
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Actores</h1>
+        <app-actor-listado (eventoActor)="getPeliculasByActor($event)"></app-actor-listado>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="container marketing">
+        <div class="row">
+          <div class="col-lg-4 text-center">
+            <app-peliculasactor [peliculasActor]="this.peliculasActorSeleccionadas"></app-peliculasactor>
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4 text-center">
+            <app-paisactor [actorSeleccionado]="this.actorSeleccionado"></app-paisactor>
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4 text-center">
+            <app-actor-detalle></app-actor-detalle>
+          </div>
+          <!-- /.col-lg-4 -->
+        </div>
+        <!-- /.row -->
+      </div>
+    </div>
+
+  </div>
+</main>

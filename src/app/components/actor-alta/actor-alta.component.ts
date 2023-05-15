@@ -2,6 +2,7 @@ import { Actor } from './../../classes/actor';
 import { FirebaseService } from './../../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Pais } from 'src/app/classes/pais';
 
 @Component({
   selector: 'app-actor-alta',
@@ -10,7 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ActorAltaComponent implements OnInit {
 
-  public pais =''
+  public pais!: Pais;
+  public paisNombre = ''
   public myForm!: FormGroup;
   public sentForm!:boolean;
 
@@ -25,7 +27,8 @@ export class ActorAltaComponent implements OnInit {
   }
 
   peliculaSeleccionada(pais:any){
-    this.pais = pais.nombre;
+    this.pais = pais;
+    this.paisNombre = pais.nombre;
   }
 
   onSubmit() {

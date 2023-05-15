@@ -23,6 +23,10 @@ import { DetallePeliculaComponent } from './components/detalle-pelicula/detalle-
 import { TablaPaisesComponent } from './components/tabla-paises/tabla-paises.component';
 import { FirebaseService } from './services/firebase.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ActorpeliculaComponent } from './components/actorpelicula/actorpelicula.component';
+import { PeliculasactorComponent } from './components/peliculasactor/peliculasactor.component';
+import { PaisactorComponent } from './components/paisactor/paisactor.component';
+import { ActorDetalleComponent } from './components/actor-detalle/actor-detalle.component';
 
 
 @NgModule({
@@ -37,7 +41,11 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     TablaPeliculaComponent,
     DetallePeliculaComponent,
     TablaPaisesComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ActorpeliculaComponent,
+    PeliculasactorComponent,
+    PaisactorComponent,
+    ActorDetalleComponent
   ],
   imports: [
     BrowserModule,

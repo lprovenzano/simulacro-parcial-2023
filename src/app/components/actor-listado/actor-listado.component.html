@@ -1,5 +1,4 @@
 <div>
-  <h1>Actores</h1>
   <ul>
     <li class='p-2' *ngFor="let actor of this.actores | async" (click)="seleccionarActor(actor)"> <h4>{{actor.nombre}} {{actor.apellido}}</h4></li>
   </ul>
