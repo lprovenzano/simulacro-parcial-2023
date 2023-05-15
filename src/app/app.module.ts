@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { FIREBASE_OPTIONS } from "@angular/fire/compat";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -21,6 +22,7 @@ import { TablaPeliculaComponent } from './components/tabla-pelicula/tabla-pelicu
 import { DetallePeliculaComponent } from './components/detalle-pelicula/detalle-pelicula.component';
 import { TablaPaisesComponent } from './components/tabla-paises/tabla-paises.component';
 import { FirebaseService } from './services/firebase.service';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { FirebaseService } from './services/firebase.service';
     PeliculaListadoComponent,
     TablaPeliculaComponent,
     DetallePeliculaComponent,
-    TablaPaisesComponent
+    TablaPaisesComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { FirebaseService } from './services/firebase.service';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule
   ],

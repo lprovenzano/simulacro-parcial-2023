@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Actor } from './../../classes/actor';
+import { FirebaseService } from './../../services/firebase.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-actor-listado',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActorListadoComponent implements OnInit {
 
-  constructor() { }
+  public actores!: Observable<any[]>;
+
+  @Output()
+  eventoActor = new EventEmitter<any>;
+
+  constructor(private firebase: FirebaseService) { }
 
   ngOnInit(): void {
+    this.actores = this.firebase.get("actores")
+  }
+
+  seleccionarActor(actor:any){
+      this.eventoActor.emit(actor);
   }
 
 }

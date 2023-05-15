@@ -1,1 +1,116 @@
-<p>pelicula-alta works!</p>
+<div class="container">
+  <main>
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <app-actor-listado (eventoActor)="seleccionarActor($event)"></app-actor-listado>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="name" class="formLabel">Nombre</label>
+              <input type="text" id="name" class="form-control" formControlName="name" />
+              <div
+                *ngIf="
+                  myForm?.get('name')?.invalid &&
+                  myForm?.get('name')?.touched
+                "
+              >
+                <div *ngIf="myForm?.get('name')?.hasError('required')">
+                  <div class="alert alert-danger" role="alert">
+                    El nombre es requerido.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="type"  class="formLabel">Tipo</label>
+              <input type="text" id="type" class="form-control" formControlName="type" />
+              <div
+                *ngIf="
+                  myForm.get('type')?.invalid &&
+                  myForm.get('type')?.touched
+                "
+              >
+                <div *ngIf="myForm.get('type')?.hasError('required')">
+                  <div class="alert alert-danger" role="alert">
+                    El tipo es requerido.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label for="release"  class="formLabel">Fecha de estreno</label>
+              <input type="date" id="release" class="form-control" formControlName="release" />
+              <div
+                *ngIf="
+                  myForm.get('release')?.invalid &&
+                  myForm.get('release')?.touched
+                "
+              >
+                <div *ngIf="myForm.get('release')?.hasError('required')">
+                  <div class="alert alert-danger" role="alert">
+                    La fecha de estreno requerida
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label for="viewers"  class="formLabel">Cantidad de espectadores</label>
+              <input type="number" id="viewers" class="form-control" formControlName="viewers" />
+              <div
+                *ngIf="
+                  myForm.get('viewers')?.invalid &&
+                  myForm.get('viewers')?.touched
+                "
+              >
+                <div *ngIf="myForm.get('viewers')?.hasError('required')">
+                  <div class="alert alert-danger" role="alert">
+                    La cantidad de espectadores es requerida
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12" class="formLabel">
+              <label for="actor">Actor</label>
+              <input
+                type="text"
+                id="actor"
+                formControlName="actor"
+                class="form-control"
+                [value]="getActorSeleccionado()"
+                [readOnly]="true"
+                [disabled]="true"
+              />
+              <div
+                *ngIf="myForm.get('actor')?.invalid && myForm.get('actor')?.touched">
+                <div *ngIf="myForm?.get('actor')?.hasError('required')">
+                  <div class="alert alert-danger" role="alert">
+                    El actor es requerido.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12" class="formLabel">
+              <input type="file" (change)="onFileSelected($event)" formControlName="image" accept="image/*">
+              <div *ngIf="myForm.get('image')?.invalid && myForm.get('image')?.touched">
+                <div class="alert alert-danger" role="alert">
+                 Tiene que tener una imagen
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <button type="submit" class="w-100 btn btn-primary btn-lg" [disabled]="!this.myForm.valid || this.sentForm">Guardar</button>
+        </form>
+        <div class="alert alert-success mt-5" role="alert" *ngIf="this.sentForm != null && this.sentForm">
+          Guardado!
+        </div>
+        <div class="alert alert-danger mt-5" role="alert" *ngIf="this.sentForm != null && !this.sentForm">
+          Ocurrió un error, no se guardó.
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

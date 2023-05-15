@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class TablaPeliculaComponent implements OnInit {
 
   @Input()
-  peliculas: any[] | undefined
+  peliculas!: any;
 
   @Output()
   eventoPelicula = new EventEmitter<Pelicula>;

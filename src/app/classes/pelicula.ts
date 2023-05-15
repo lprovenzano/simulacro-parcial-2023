@@ -1,13 +1,16 @@
+import { Actor } from "./actor"
+
 export class Pelicula {
-  public id: Number
+  public id: string
   public nombre: string
   public tipo: string
   public fechaEstreno: string
   public cantidadPublico: Number
   public urlFoto: string
+  public actores: Actor[]
 
   constructor(
-    id: Number,
+    id: string,
     nombre: string,
     tipo: string,
     fechaEstreno: string,
@@ -20,5 +23,6 @@ export class Pelicula {
     this.fechaEstreno = fechaEstreno
     this.cantidadPublico = cantidadPublico
     this.urlFoto = urlFoto
+    this.actores = []
   }
 }

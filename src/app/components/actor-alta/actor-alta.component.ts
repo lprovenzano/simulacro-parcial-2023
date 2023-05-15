@@ -1,3 +1,4 @@
+import { Actor } from './../../classes/actor';
 import { FirebaseService } from './../../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -29,11 +30,7 @@ export class ActorAltaComponent implements OnInit {
 
   onSubmit() {
     if (this.myForm?.valid) {
-      const actor = {
-        nombre: this.myForm.value.firstName,
-        apellido: this.myForm.value.lastName,
-        pais: this.pais
-      }
+      const actor = new Actor('',this.myForm.value.firstName, this.myForm.value.lastName, this.pais)
       this.firebase.save("actores", actor)
       this.sentForm = true;
     } else {

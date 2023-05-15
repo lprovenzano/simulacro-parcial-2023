@@ -16,4 +16,8 @@ export class DetallePeliculaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getActores(){
+    return this.pelicula?.actores[0].nombre + ' ' + this.pelicula?.actores[0].apellido
+  }
+
 }

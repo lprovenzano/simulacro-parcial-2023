@@ -1,7 +1,6 @@
 <table class="table table-striped">
   <thead>
     <tr class="text-center">
-      <th scope="col">#</th>
       <th scope="col">Nombre</th>
       <th scope="col">Tipo</th>
       <th scope="col">Fecha Estreno</th>
@@ -10,8 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let pelicula of peliculas;" class="text-center" (click)="emitDetallePelicula(pelicula)">
-      <th scope="row">{{pelicula.id}}</th>
+    <tr *ngFor="let pelicula of peliculas | async" class="text-center" (click)="emitDetallePelicula(pelicula)">
       <td>{{pelicula.nombre}}</td>
       <td>{{pelicula.tipo}}</td>
       <td>{{pelicula.fechaEstreno}}</td>

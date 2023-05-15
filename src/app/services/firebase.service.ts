@@ -13,7 +13,7 @@ export class FirebaseService {
     const id = this.firestore.createId()
     const doc = col.doc(id)
     document.id = id;
-    doc.set(document)
+    doc.set({...document})
   }
 
   get(collectionName:string){
@@ -23,7 +23,7 @@ export class FirebaseService {
   update(collectionName:string, document:any){
     const path = collectionName +"/"+document.id;
     const doc = this.firestore.doc(path)
-    doc.update(document)
+    doc.update({...document})
   }
 
   delete(collectionName:string, document:any){
